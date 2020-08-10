@@ -1,0 +1,69 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "image": "https://images.unsplash.com/photo-1561055657-b9e0bf0fa360?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 2,
+      "username": "marimanver",
+      "email": "marimanver@gmail.com",
+      "password": "1111",
+      "image": "https://images.unsplash.com/photo-1546422401-68b415cbf8de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 3,
+      "username": "aquaman",
+      "email": "vsoroka@gmail.com",
+      "password": "1111",
+      "image": "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 4,
+      "username": "cactus",
+      "email": "cactus@gmail.com",
+      "password": "cacti",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.0h8fo76BwSZTehnXfYhcNQHaHc&pid=Api&P=0&w=300&h=300"
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "postedBy": "admin",
+      "topic": "kittie",
+      "date": "2020-08-09T12:02:22.717Z",
+      "message": "There are, of course, bad movies released every week. Some of them feature talented actors. Recall that Judi Dench was in The Chronicles of Riddick, a 29 per cent Rotten Tomatoes stinker that still beat Cats. I like cult movies and sci-fi. It’s probably why the Cats trailer that scared the crap out of people didn’t overly concern me. But Riddick held scant appeal. Still, there’s nothing wrong with getting paid.",
+      "avatar": "https://images.unsplash.com/photo-1561055657-b9e0bf0fa360?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "image": "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 2,
+      "postedBy": "marimanver",
+      "topic": "Time",
+      "date": "2020-08-09T12:05:51.239Z",
+      "message": "Not all uses of time are equal, and this simple truth can make a big difference in life. People who spend their time doing more profitable work make more money. People who spend their time investing in others build better relationships. People who spend their time creating a flexible career enjoy more freedom. People who spend their time working on high-impact projects contribute more to society. Whether you want more wealth, more friendship, more freedom, or more impact, it all comes down to how you spend and value your time.",
+      "avatar": "https://images.unsplash.com/photo-1546422401-68b415cbf8de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "image": "https://images.unsplash.com/photo-1596913895779-590ec101b393?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 3,
+      "postedBy": "aquaman",
+      "topic": "My alarm",
+      "date": "2020-08-09T12:07:16.800Z",
+      "message": "If you're like me, you probably want the things listed above (friendship, freedom, impact) and others too (health). But you can't have everything at once, so you need to understand how to effectively manage the tradeoffs that you face on a day-to-day basis",
+      "avatar": "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 4,
+      "postedBy": "aquaman",
+      "topic": "terms",
+      "date": "2020-08-09T12:07:35.543Z",
+      "message": "This article explains how to figure out what your time is worth and use that information to spend your time more effectively. Understanding how to get the most out of your time starts with knowing—in exact terms—what your time is worth.",
+      "avatar": "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "image": ""
+    }
+  ]
+}

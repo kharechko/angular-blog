@@ -1,0 +1,223 @@
+<ng-sidebar-container>
+    <ng-sidebar [opened]="sidebarToggler">
+    <span class="material-icons mat-icon close-icon" (click)="toggleSidebar()">
+        clear
+    </span>
+  <ng-container *ngIf="registerPage; else userPage">
+        <li>
+            <button class="btn btn-block borderless" mat-button (click)="openModal(signInModal)">Sign in</button>
+        </li>
+        <li>
+            <button class="btn btn-block borderless" mat-button (click)="openModal(registerModal)">Sign up</button>
+        </li>
+    </ng-container>
+
+    <ng-template #userPage>
+        <li class="profile-image" [style.background-image]='"url("+userImage+")"'></li>
+        <li>
+            <button class="btn btn-block borderless" mat-button>{{ userProfileName }}</button>
+        </li>
+        <li>
+            <button class="btn btn-block borderless" mat-button (click)="openModal(postModal)">Add post</button>
+        </li>
+        <li>
+            <button class="btn btn-block borderless" mat-button (click)="signOut()">Sign out</button>
+        </li>
+    </ng-template>
+</ng-sidebar>
+
+
+ <div ng-sidebar-content>
+    <div (click)="toggleSidebar()" class="burger-icon">
+        <mat-icon  class="mat-icon">menu</mat-icon>
+     </div>
+   <ng-container *ngIf="registerPage; else userProfile">
+       <div *ngFor="let post of allPostsArray" class="card-container"> 
+          <mat-card class="post-card">
+              
+             <mat-card-header>
+                <div mat-card-avatar class="card-image" [style.background-image]='"url("+post.avatar+")"'></div>
+                
+                <mat-card-title>
+                     {{ post.postedBy }}
+                </mat-card-title>
+
+                <mat-card-subtitle>
+                          {{ post.topic }} 
+                     <br>
+                          {{ post.date | date: dateFormat }}
+                </mat-card-subtitle>
+           </mat-card-header>
+             <img mat-card-image [src]="post.image">
+
+             <mat-card-content>
+                <p>
+                    {{ post.message }}
+                </p>
+             </mat-card-content>
+         </mat-card>
+      </div>
+    </ng-container>
+</div>
+    
+
+ <ng-template #userProfile>
+   <div *ngFor="let post of usersPosts" class="card-container">
+      <mat-card class="post-card">
+        <mat-card-header>
+          <div mat-card-avatar class="card-image" [style.background-image]='"url("+post.avatar+")"'></div>
+           <mat-card-title>{{ post.postedBy  }}</mat-card-title>
+            <mat-card-subtitle>
+                     {{ post.topic }} 
+                   <br>
+                    {{ post.date | date: dateFormat }}
+            </mat-card-subtitle>
+         </mat-card-header>
+         <img mat-card-image [src]="post.image">
+         <mat-card-content>
+                      <p>
+                        {{ post.message }}
+                      </p>
+          </mat-card-content>
+          <mat-card-actions>
+             <button mat-button (click)="openModal(postModal, post)" class="borderless">EDIT</button>
+              <button mat-button (click)="deletePost(post)" class="borderless">DELETE</button>
+           </mat-card-actions>
+          </mat-card>
+        </div>
+
+        <div *ngFor="let post of notUserPosts" class="card-container">
+            <mat-card class="post-card">
+              <mat-card-header>
+                <div mat-card-avatar class="card-image" [style.background-image]='"url("+post.avatar+")"'></div>
+                 <mat-card-title>{{ post.postedBy  }}</mat-card-title>
+                  <mat-card-subtitle>
+                           {{ post.topic }} 
+                         <br>
+                          {{ post.date | date: dateFormat }}
+                  </mat-card-subtitle>
+               </mat-card-header>
+               <img mat-card-image [src]="post.image">
+               <mat-card-content>
+                            <p>
+                              {{ post.message }}
+                            </p>
+                </mat-card-content>
+                </mat-card>
+              </div>
+   </ng-template>
+</ng-sidebar-container>
+
+
+
+
+
+
+
+<ng-template #registerModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Sign Up</h4>
+    <button type="button" class="close pull-right borderless" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <label for="profilePhoto"  [style.background-image]='"url("+userImage+")"' class="profile-image"></label>
+      <input type="file" id="profilePhoto" class="d-none" (change)='uploadAvatarPhoto($event)'[(ngModel)]="userPhoto" name="userPhoto" accept=".png, .jpg, .jpeg">
+      <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Ex. john"  name="registerName" [(ngModel)]="registerName">
+      </mat-form-field>
+
+       <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Email address</mat-label>
+          <input matInput placeholder="pat@example.com" [(ngModel)]="registerEmail" name="registerEmail">
+       </mat-form-field>
+  
+       <mat-form-field appearance="outline" class="col-12">
+           <mat-label>Enter your password</mat-label>
+           <input matInput [type]="hide ? 'password' : 'text'"  name="userPassword" [(ngModel)]="registerPassword">
+       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="borderless"> 
+           <mat-icon style="font-size: 18px;">
+            {{hide ? 'visibility_off' : 'visibility'}}
+         </mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+   </div>
+   <div class="modal-footer">
+       <button mat-raised-button style="background: rgb(165, 187, 238);" (click)="signUp()" class="borderless">Submit</button>
+   </div>
+</ng-template>
+
+
+
+
+  <ng-template #signInModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Sign In</h4>
+      <button type="button" class="close pull-right borderless" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <mat-form-field appearance="outline" class="col-12">
+                <mat-label>Email address</mat-label>
+                <input matInput placeholder="pat@example.com" [(ngModel)]="userEmail" name="userEmail">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="col-12">
+                  <mat-label>Enter your password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'"  name="userPassword" [(ngModel)]="userPassword">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="borderless">
+                  <mat-icon style="font-size: 18px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+              </mat-form-field>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button style="background: rgb(165, 187, 238);" (click)="signIn()" class="borderless">Submit</button>
+    </div>
+  </ng-template>
+
+  <ng-template #postModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add post</h4>
+      <button type="button" class="close pull-right borderless" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <mat-form-field appearance="outline" class="col-12">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="type here" [(ngModel)]="postTitle" name="postTitle">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="col-12">
+                    <mat-label>Text:</mat-label>
+                    <textarea matInput [(ngModel)]="postDescr" name="postDescr"></textarea>
+              </mat-form-field>
+              <label for="postPhoto">
+                <span class="material-icons ml-5" style="font-size: 50px;" *ngIf="isSpinned; else progressSpinner">
+                        add_a_photo
+                 </span>
+             </label>
+            <div #progressSpinner>
+                <mat-progress-spinner [color]="primary" [mode]="mode" [value]="spinnerValue" [diameter]="50" class="ml-5"></mat-progress-spinner>
+            </div>
+                <input type="file" id="postPhoto" (change)='uploadPostPhoto($event)' [(ngModel)]="postPhoto" name="postPhoto" accept=".png, .jpg, .jpeg" class="d-none">
+          </form>
+    </div>
+    <div class="modal-footer">
+        <button mat-raised-button style="background: rgb(165, 187, 238);" (click)="addPost()">Post</button>
+    </div>
+  </ng-template>
+
+
+
+
+
+
