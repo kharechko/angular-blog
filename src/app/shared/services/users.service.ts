@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IPost } from '../interfaces/post.interface';
 
-
 @Injectable({
   providedIn: 'root'
 })
