@@ -32,5 +32,4 @@ deletePost(post: IPost): Observable<Array<IPost>>{
 updatePost(post: IPost): Observable<Array<IPost>>{
     return this.http.put<Array<IPost>>(environment.url + 'blogs/' + post.id, post);
 }
-
 }
