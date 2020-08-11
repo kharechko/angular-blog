@@ -214,7 +214,7 @@ resetRegisterForm(): void{
 addPost(): void{
   const post: IPost = new Post(1, this.userProfileName, this.postTitle, new Date(), this.postDescr, this.userImage, this.postPhoto);
   if(!this.isEdited) {
-    if(this.allPostsArray.length >= 1){
+    if(this.allPostsArray.length > 0){
       post.id = this.allPostsArray.slice(-1)[0].id + 1;
     }
     this.blogsService.addPost(post).subscribe( () => {
