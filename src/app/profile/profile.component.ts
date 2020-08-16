@@ -162,7 +162,7 @@ getUsers(): void{
 
 validateRegisterForm(): boolean{
   this.getUsers();
-  if(this.usersArray.length >= 1) {
+  if(this.usersArray.length > 0) {
     if(this.usersArray.some(user => { return this.registerEmail === user.email || this.registerName === user.username})) { return false}
     else { return true }
   }  else { return true }
@@ -172,7 +172,7 @@ validateRegisterForm(): boolean{
 signUp(): void{
    if(this.validateRegisterForm() && this.registerName && this.registerEmail && this.registerPassword) {
     const user: IUser = new User(1, this.registerName, this.registerEmail, this.registerPassword, this.userImage);
-    if(this.usersArray.length >= 1){  user.id = this.usersArray.slice(-1)[0].id + 1;  }
+    if(this.usersArray.length > 0){  user.id = this.usersArray.slice(-1)[0].id + 1;  }
     this.usersService.addUser(user).subscribe( () => {
       this.getUsers();
       this.modalRef.hide();
